@@ -1,5 +1,5 @@
 # ===========================
-# Reliable Miracle - Storage Analyzer
+# Storage Analyzer
 # CompTIA A+ 220-1201 Objectives: 3.4, 5.2
 # ===========================
 
