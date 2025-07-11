@@ -5,12 +5,19 @@
 
 # Get Operating System Info
 $os = Get-CimInstance Win32_OperatingSystem
-Write-Host "============================"
-Write-Host "🖥️  Operating System Info"
-Write-Host "============================"
+Write-Host "=== Operating System ==="
 Write-Host "OS: $($os.Caption) $($os.Version)"
 Write-Host "Architecture: $($os.OSArchitecture)"
-Write-Host "Install Date: $([Management.ManagementDateTimeConverter]::ToDateTime($os.InstallDate))"
+try {
+    if ($os.InstallDate -and $os.InstallDate -match '^\d+$') {
+        $installDate = [Management.ManagementDateTimeConverter]::ToDateTime($os.InstallDate)
+        Write-Host "Install Date: $installDate"
+    } else {
+        Write-Host "Install Date: Unavailable"
+    }
+} catch {
+    Write-Host "Install Date: Failed to retrieve"
+}
 Write-Host ""
 
 # Get system drive letter
@@ -19,9 +26,7 @@ $volume = Get-Volume -DriveLetter $sysDrive
 $disk = Get-PhysicalDisk | Where-Object { $_.DeviceId -eq $volume.Path.Split("\\")[-1] -or $_.FriendlyName -ne $null } | Select-Object -First 1
 $partition = Get-Disk | Where-Object { $_.Number -eq $volume.ObjectId.Split("\")[1] }
 
-Write-Host "============================"
-Write-Host "💽  System Drive Info"
-Write-Host "============================"
+Write-Host "=== System Drive Info ==="
 Write-Host "Drive Letter: $($volume.DriveLetter):"
 Write-Host "Volume Label: $($volume.FileSystemLabel)"
 Write-Host "Drive Type: $($disk.MediaType)"
