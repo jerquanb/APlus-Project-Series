@@ -30,12 +30,6 @@ This script identifies the **current system drive** (where Windows is installed)
 
 ---
 
-## 📷 Sample Output
-
-![Output Screenshot](output_sample.png)
-
----
-
 ## 🧠 What I Learned
 
 - How to detect and analyze Windows storage volumes using PowerShell
