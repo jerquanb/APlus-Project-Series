@@ -1,44 +1,26 @@
-# ===========================
-# Reliable Miracle - Storage Analyzer
-# CompTIA A+ 220-1201 Objectives: 3.4, 5.2
-# ===========================
+# File: Get-SystemDriveInfo.ps1
 
-# Get Operating System Info
-$os = Get-CimInstance Win32_OperatingSystem
-Write-Host "============================"
-Write-Host "🖥️  Operating System Info"
-Write-Host "============================"
-Write-Host "OS: $($os.Caption) $($os.Version)"
-Write-Host "Architecture: $($os.OSArchitecture)"
-Write-Host "Install Date: $([Management.ManagementDateTimeConverter]::ToDateTime($os.InstallDate))"
-Write-Host ""
+$systemDrive = $env:SystemDrive.TrimEnd('\')  # e.g., "C:"
+$volume = Get-Volume -DriveLetter $systemDrive.TrimEnd(':')
+$partition = Get-Partition -DriveLetter $systemDrive.TrimEnd(':')
+$disk = Get-Disk -Number $partition.DiskNumber
+$physicalDisk = Get-PhysicalDisk | Where-Object { $_.DeviceId -eq $disk.Number }
+$bitlocker = Get-BitLockerVolume -MountPoint $systemDrive -ErrorAction SilentlyContinue
 
-# Get system drive letter
-$sysDrive = $env:SystemDrive.TrimEnd(":")
-$volume = Get-Volume -DriveLetter $sysDrive
-$disk = Get-PhysicalDisk | Where-Object { $_.DeviceId -eq $volume.Path.Split("\\")[-1] -or $_.FriendlyName -ne $null } | Select-Object -First 1
-$partition = Get-Disk | Where-Object { $_.Number -eq $volume.ObjectId.Split("\")[1] }
-
-Write-Host "============================"
-Write-Host "💽  System Drive Info"
-Write-Host "============================"
+Write-Host "=== System Drive Information ==="
 Write-Host "Drive Letter: $($volume.DriveLetter):"
-Write-Host "Volume Label: $($volume.FileSystemLabel)"
-Write-Host "Drive Type: $($disk.MediaType)"
-Write-Host "File System: $($volume.FileSystem)"
-Write-Host "Partition Style: $($partition.PartitionStyle)"
-Write-Host "Health Status: $($volume.HealthStatus)"
-Write-Host ("Total Size: {0} GB" -f [math]::Round($volume.Size / 1GB, 2))
-Write-Host ("Free Space: {0} GB" -f [math]::Round($volume.SizeRemaining / 1GB, 2))
+Write-Host "Label       : $($volume.FileSystemLabel)"
+Write-Host "Total Size  : $([Math]::Round($volume.Size / 1GB, 2)) GB"
+Write-Host "Free Space  : $([Math]::Round($volume.SizeRemaining / 1GB, 2)) GB"
+Write-Host "File System : $($volume.FileSystem)"
+Write-Host "Health      : $($volume.HealthStatus)"
+Write-Host "Drive Type  : $($physicalDisk.MediaType)"
+Write-Host "Partition Style: $($disk.PartitionStyle)"
 
-# Optional BitLocker Status
-try {
-    $bitLocker = Get-BitLockerVolume -MountPoint "$($volume.DriveLetter):"
-    if ($bitLocker) {
-        Write-Host "BitLocker Status: $($bitLocker.ProtectionStatus)"
-    } else {
-        Write-Host "BitLocker Status: Not Enabled"
-    }
-} catch {
-    Write-Host "BitLocker Status: Unknown or Not Supported"
+if ($bitlocker) {
+    Write-Host "BitLocker   : $($bitlocker.ProtectionStatus)"
+    Write-Host "Encryption  : $($bitlocker.EncryptionMethod)"
+} else {
+    Write-Host "BitLocker   : Not Available or Not Enabled"
 }
+
