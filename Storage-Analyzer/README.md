@@ -41,7 +41,7 @@ This project was designed to reinforce both technical scripting and CompTIA exam
 
 ## 📷 Sample Output
 
-![Sample Output](output_sample.png)
+![Sample Output](SampleOutput.png)
 
 ---
 
