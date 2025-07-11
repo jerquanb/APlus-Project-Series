@@ -1,6 +1,6 @@
 # Storage Analyzer (PowerShell)
 
-## 📚 CompTIA A+ 220-1201 Objectives Covered:
+## 📚 CompTIA A+ 220-1201 Objectives:
 - **3.4**: Compare and contrast storage devices.
 - **5.2**: Troubleshoot drive and RAID issues.
 
@@ -8,36 +8,38 @@
 
 ## 🧠 Description
 
-A PowerShell script that detects and reports all storage devices on a Windows machine, including:
+This script identifies the **current system drive** (where Windows is installed) and outputs the following:
 
-- Drive type (HDD, SSD, NVMe)
-- File system (NTFS, exFAT, etc.)
-- Total size, used space, and free space
-- Partition count
+- Operating system name, version, and architecture
+- Drive letter and volume label
+- Drive type (SSD vs HDD)
+- File system format (e.g., NTFS)
+- Partition style (MBR or GPT)
+- Total capacity and available space
+- Volume health status
+- BitLocker protection status (if supported)
+- OS install date (if available)
 
 ---
 
 ## 💻 Tools Used
 
 - PowerShell 5.1+
-- `Get-PhysicalDisk`
-- `Get-Volume`
-- `Get-Disk`
+- `Get-Volume`, `Get-PhysicalDisk`, `Get-Disk`
+- `Get-CimInstance` for OS details
 
 ---
 
-## 🔧 Skills Demonstrated
+## 📷 Sample Output
 
-- Windows storage management
-- Command-line scripting
-- Troubleshooting disk issues
-- Output formatting and logging
+![Output Screenshot](output_sample.png)
 
 ---
 
-## 📝 Output Sample
+## 🧠 What I Learned
 
-```powershell
-Drive C: - SSD - NTFS - 500GB Total - 420GB Used - 80GB Free
-Drive D: - HDD - exFAT - 1TB Total - 150GB Used - 850GB Free
+- How to detect and analyze Windows storage volumes using PowerShell
+- Differences between SSDs, file systems, and partition styles
+- How to simulate real-world Tier 1 diagnostics aligned with A+ exam objectives
 
+This project replicates a help desk technician’s role in identifying drive performance issues and verifying storage configurations on a Windows-based system.
