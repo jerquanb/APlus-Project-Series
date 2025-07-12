@@ -1,4 +1,4 @@
-# A+ Project Series: Comptia Core 1
+# A+ Project Series: CompTIA Core 1
 
 This repository contains self-directed IT support projects aligned with the CompTIA A+ (220-1201) certification objectives. Each project is designed to demonstrate real-world technical skills in areas such as hardware, networking, troubleshooting, mobile support, and virtualization.
 
