@@ -13,7 +13,7 @@ This repository contains self-directed IT support projects aligned with the Comp
 | Mobile Troubleshooting SOP | 1.1 / 5.4 | Step-by-step guide to resolving mobile sync and connection issues |
 | VirtualBox Lab | 4.1 | Set up, snapshot, and restore a virtualized environment |
 | Cloud Services Walkthrough | 4.2 | Real usage + comparison of SaaS, PaaS, and IaaS |
-| PSU Selection Tool | 3.6 | Selects a PSU |
+| PSU Selection Tool | 3.6 | Smart script that estimates power needs from detected hardware and recommends a PSU with proper wattage, modularity, and VAC compatibility |
 ---
 
 ## 🧠 Why This Exists
