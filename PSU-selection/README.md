@@ -17,4 +17,5 @@ A Python-based script that automatically analyzes your system's hardware and pro
 
 ## 🖥️ Sample Output
 
+<img width="1481" height="375" alt="image" src="https://github.com/user-attachments/assets/71d62514-63db-4b42-92ed-7f127f56a7e0" />
 
