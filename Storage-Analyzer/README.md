@@ -63,7 +63,3 @@ This project was designed to reinforce both technical scripting and CompTIA exam
 - How to build a dual-purpose script that both simulates real IT support tasks and supports active A+ certification study
 
 ---
-
-> **Built by Jerquan Brabble** | Entry-Level IT Support | A+ Core 1 Candidate  
-> This project was part of a hands-on learning plan to bridge the gap between certification objectives and real-world application.
-
