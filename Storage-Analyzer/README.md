@@ -65,14 +65,6 @@ This project was designed to reinforce both technical scripting and CompTIA exam
 
 ---
 
-## 🔄 Future Enhancements
-
-- Export results to CSV or JSON for documentation
-- Include SMART status where available
-- Build out additional quiz question logic
-
----
-
 > **Built by Jerquan Brabble** | Entry-Level IT Support | A+ Core 1 Candidate  
 > This project was part of a hands-on learning plan to bridge the gap between certification objectives and real-world application.
 
