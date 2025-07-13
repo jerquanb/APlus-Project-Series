@@ -1,4 +1,4 @@
-# Storage Analyzer v2.0 (PowerShell)
+# Storage Analyzer (PowerShell)
 
 ## 📚 CompTIA A+ 220-1201 Objectives Covered:
 - **3.4**: Compare and contrast storage devices
