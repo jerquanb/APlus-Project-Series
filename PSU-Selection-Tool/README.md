@@ -34,15 +34,12 @@ A Python-based script that automatically analyzes your system's hardware and pro
 
 ---
 
-## 🔧 Key Features
+## 🧠 What I Learned
 
-| Feature              | Description                                                                 |
-|----------------------|-----------------------------------------------------------------------------|
-| System Detection     | Auto-detects CPU, GPU, and storage drives to estimate real power usage      |
-| Laptop Awareness     | Adjusts wattage estimation based on whether the system is a laptop or desktop |
-| VAC Region Support   | Accepts user region input to verify proper input voltage compatibility      |
-| PSU Recommendation   | Calculates total system power draw with 30% headroom and recommends a PSU   |
-| Efficiency Matching  | Suggests 80+ efficiency rating based on estimated draw                      |
-| Modularity Guidance  | Recommends modular or non-modular PSU depending on system type              |
+- How to estimate power needs based on hardware tiers and use cases
+- Why input voltage (VAC) and output rails (12V/5V/3.3V) matter for PSU compatibility
+- How modularity affects airflow, cable management, and system build flexibility
+- How to use hardware detection to build smarter, context-aware scripts
+- How to translate CompTIA A+ knowledge (Objective 3.6) into a usable IT support tool
 
 ---
